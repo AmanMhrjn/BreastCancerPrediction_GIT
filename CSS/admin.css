@@ -1,0 +1,106 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/OpenSans-Regular.ttf");
+}
+
+*{
+    margin: 0;
+    padding: 0;    
+}
+  
+body{
+    font-family: "Open Sans", sans-serif;
+    background: #CACACA;
+}
+/* Navigation codes */
+nav{
+    background: #313131;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    text-align: center;
+}
+
+.logoname{
+    color: #fff;
+    font-size: 30px;
+}
+
+/* End of navigation bar */
+
+.admincontainer{
+    /* border: 2px solid black; */
+    display: flex;
+    width: 100%;
+    height: 630px;
+}
+
+.admincontainer .sidebarLeft{
+    border: 2px solid black;
+    background: #313131;
+    /* padding: 16px; */
+    width: 15%;
+    text-align: center;
+
+}
+
+ul{
+    display: block;
+    border: 1px solid white;
+    padding: 12px;
+    margin-top: 7%;
+}
+
+ul li{
+    list-style: none;
+    cursor: pointer; 
+}   
+
+ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 12px;
+    color: white;
+    font-size: 18px;
+}
+
+
+.admincontainerlogin{
+    position: relative;
+    width: 100%;
+    height: 550px;
+    /* border: 1px solid black; */
+}
+
+form{
+    /* border: 1px solid black; */
+    padding: 12px;
+    width: 20%;
+    margin: 5% auto;
+    box-shadow: 8px 8px 40px #000000;
+}
+
+h2{
+    text-align: center;
+}
+
+input[type=text]  {
+    width: 100%;
+    padding: 12px;
+    margin: 40px 0px 15px 0px;
+    box-sizing: border-box;
+}
+
+input[type=password]{
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0px 15px 0px;
+    box-sizing: border-box;
+}
+
+.admin-logn{
+    padding: 12px;
+    width: 40%;
+    cursor: pointer;
+}

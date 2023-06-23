@@ -1,0 +1,405 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/OpenSans-Regular.ttf");
+}
+
+*{
+    margin: 0;
+    padding: 0;    
+}
+  
+body{
+    font-family: "Open Sans", sans-serif;
+    background: #CACACA;
+}
+/* Navigation codes */
+nav{
+    background-color: #AE4EC6;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    padding: 0px 100px;
+}
+
+nav ul{
+    margin-left: 30%;
+    width: 100%;
+}
+
+nav li{
+    display: inline-block;
+    list-style: none;
+    /* border: 2px solid #c5c5c5; */
+}
+nav li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0px 30px;
+    color: white;
+    font-size: 18px;
+}
+
+nav ul li a:hover{
+    color: rgb(94, 10, 67);
+    font-weight: bold;
+    opacity: 80%;
+    transition: all 0.5s ease os;
+}
+
+.active{
+    color: rgb(94, 10, 67);
+    border-bottom: 3px solid #530639;
+    font-weight: bold;
+}
+
+
+.logoname{
+    /* border: 2px solid white; */
+    position: relative;
+    font-size: 28px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    width: 80%;
+}
+
+/* End of navigation bar */
+
+/* Home page starts */
+.maincontainer{
+    /* border: 2px solid black; */
+    margin-top: 0%;
+    display: flex;
+    height: 750px;
+    width: 100%;
+}
+
+.maincontainer .webIntro{
+    /* border: 2px solid black; */
+    padding: 16px;
+    width: 50%;
+    height: 300px;
+    margin: 10% 0% 0% 10%;
+}
+
+.maincontainer .webIntro p{
+    line-height: 36px;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.maincontainer .webImg{
+    /* border: 2px solid black; */
+    width: 50%;
+    /* align-items: center; */
+    justify-content: center;
+    position: relative;
+    /* margin: auto; */
+}
+
+.breastcancerimg{
+    margin: 2% 0% 0% 30%;
+}
+
+/* End of home page */
+.header{
+    /* border-bottom: 2px solid black; */
+    padding: 14px;
+}  
+
+h1{
+    text-align: center;
+}
+
+form{
+    /* border: 2px solid black; */
+    width: 97%;
+    /* display: block; */
+    overflow: hidden;
+    padding: 14px;
+    margin-top: 20px;
+    /* margin-left: 5%;
+    margin-right: 10%; */
+}
+
+label{
+    font-size: 20px;
+}
+
+input{
+    width: 97%;
+    /* margin-right: 5%; */
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    opacity: 80%;
+    margin: 9px 10px 8px 0px;
+}
+
+/* Login page */
+.loginHeader{
+    padding: 12px;
+    border-bottom: 3px solid #b431d5;
+    text-align: center;
+    color: #752888;
+}
+
+.loginHeader p{
+    font-weight: bold;
+    font-size: 40px;
+
+}
+
+label{
+    font-weight: bold;
+    color: #752888;
+}
+
+.loginBox{
+    /* border: 2px solid black; */
+    margin: auto;
+    padding: 12px;
+    width: 40%;
+    height: 600px;
+    background: #b7b7b7;
+    box-shadow: 8px 8px 40px #000000;
+}
+
+.input {
+    /* background-color: none; */
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 20px;
+    padding: 20px;
+    /* text-align: center; */
+    border: 2px solid white;
+    border-radius: 5px;
+    /* box-shadow: 3px 3px 2px rgb(249, 255, 85); */
+  }
+  
+  .input:focus {
+    color: rgb(181, 28, 153);
+    /* background-color: #212121; */
+    outline-color: rgb(181, 28, 153);
+    box-shadow: 3px 3px 16px rgb(181, 28, 153);
+    transition: .1s;
+    transition-property: box-shadow;
+  }
+
+  .signupBox{
+    /* border: 2px solid black; */
+    margin: 5% auto;
+    padding: 12px;
+    width: 40%;
+    height: 1150px;
+    background: #b7b7b7;
+    box-shadow: 8px 8px 40px #000000;
+}
+
+  .signupmsg{
+    color: #752888;
+    font-size: 18px;
+    margin-top: 4%;
+  }
+
+  .signupmsg a{
+    text-decoration: none;
+    color: #752888;
+    font-weight: bold;
+  }
+
+  .signupmsg a:hover{
+    cursor: pointer;
+    color: #AE4EC6;
+    border-bottom: 2px solid #AE4EC6;
+
+  }
+  
+  .loginbtn {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    margin-top: 10%;
+    width:150px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .loginbtn:hover {
+    background-color: #d82bc1;
+    box-shadow: 0px 15px 20px rgba(193, 65, 189, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .loginbtn:active {
+    transform: translateY(-1px);
+  }
+
+/* end of login page */
+/* Signup page */
+.maincontainersignup{
+    /* border: 2px solid black; */
+    margin-top: 0%;
+    display: flex;
+    height: 1300px;
+    width: 100%;
+}
+  .loginmsg{
+    color: #752888;
+    font-size: 18px;
+    margin-top: 4%;
+  }
+
+  .loginmsg a{
+    text-decoration: none;
+    color: #752888;
+    font-weight: bold;
+  }
+
+  .loginmsg a:hover{
+    cursor: pointer;
+    color: #AE4EC6;
+    border-bottom: 2px solid #AE4EC6;
+
+  }
+
+  .signupHeader{
+    padding: 12px;
+    border-bottom: 3px solid #b431d5;
+    text-align: center;
+    color: #752888;
+}
+
+.signupHeader p{
+    font-weight: bold;
+    font-size: 40px;
+
+}
+
+  .signupbtn {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    margin-top: 10%;
+    width:150px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .signupbtn:hover {
+    background-color: #d82bc1;
+    box-shadow: 0px 15px 20px rgba(193, 65, 189, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .signupbtn:active {
+    transform: translateY(-1px);
+  }
+
+/* end of signup page */
+/* Footer */
+footer{
+    position: absolute;
+    background: #AE4EC6;
+    text-align: center;
+    padding: 16px;
+    font-size: 20px;
+    width: 100%;
+    color: white;
+}
+
+
+
+.error{
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+
+/* PRediction */
+.maincontainerprediction{
+  /* border: 2px solid black; */
+  margin-top: 0%;
+  display: flex;
+  height: 1250px;
+  width: 100%;
+}
+
+.predictionBox{
+  /* border: 2px solid black; */
+  margin: 5% auto;
+  padding: 12px;
+  width: 40%;
+  height: 1100px;
+  background: #b7b7b7;
+  box-shadow: 8px 8px 40px #000000;
+}
+
+.predictionHeader{
+  padding: 12px;
+  border-bottom: 3px solid #b431d5;
+  text-align: center;
+  color: #752888;
+}
+
+.predictionHeader p{
+  font-weight: bold;
+  font-size: 40px;
+
+}
+
+.predictbtn {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  margin-top: 10%;
+  width:150px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  /* transition: all 0.3s ease 0s; */
+  transition: transform .2s;
+  cursor: pointer;
+  outline: none;
+}
+
+.predictbtn:hover {
+  background-color: #d82bc1;
+  box-shadow: 0px 15px 20px rgba(193, 65, 189, 0.4);
+  color: #fff;
+  transform: scale(1.1);
+  /* transform: translateX(-7px); */
+}
+
+/* .predictbtn:active {
+  transform: translateY(-1px);
+} */
+/* End of PRediction */
