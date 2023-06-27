@@ -10,7 +10,7 @@
         $user_email = $_POST['addeamil'];
         $user_psw= $_POST['addpsw'];
 
-        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' ";
+        // $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' ";
             $result = mysqli_query($conn, $sql);
             echo $conn -> error;
             if ($result->num_rows == 0) {
@@ -41,8 +41,9 @@
 <nav>
         <div class="logoname">Breast Cancer Prediction</div>                    
     </nav>
-    <div class="admincontainer">
+    <div class="useradmincontainer">
         <div class="sidebarLeft">
+        <h2>Administrator</h2>
             <ul>
                 <li>
                     <a href="dashboard.php">Dashboard</a>
@@ -88,6 +89,7 @@
                     </div>
                     <div class="userbtn">
                         <a href="user.php">Cancel</a>
+                        <input type="button" value="cancel">
                     </div>
                 </div>
             </form>

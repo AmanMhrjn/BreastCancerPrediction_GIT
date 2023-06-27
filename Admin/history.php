@@ -18,6 +18,7 @@
     </nav>
     <div class="admincontainer">
         <div class="sidebarLeft">
+        <h2>Administrator</h2>
             <ul>
                 <li>
                     <a href="dashboard.php">Dashboard</a>

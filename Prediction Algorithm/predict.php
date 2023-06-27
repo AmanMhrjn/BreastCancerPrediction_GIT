@@ -131,7 +131,10 @@ $numEpochs = 1000;
 $weights = trainModel($normalizedDataset, $labels, $learningRate, $numEpochs);
 
 // Perform prediction on the user input
-$sample = [$textureMean, $areaMean, $concavityMean];
+$sample = [$textureMean,$radiusMean, $perimeterMean, $areaMean, $smoothnessMean, $compactnessMean,  $concavityMean,$concaveMean,
+            $symmetryMean,$fractalDimensionMean,$textureSe,$radiusSe,$perimeterSe,$areaSe,$smoothnessSe,$compactnessSe,$concavitySe,
+            $concaveSe,$symmetrySe,$fractalDimensionSe,$textureWorst,$radiusWorst,$perimeterWorst,$areaWorst,$smoothnessWorst,
+            $compactnessWorst,$concavityWorst,$concaveWorst,$symmetryWorst,$fractalDimensionWorst];
 $normalizedSample = normalize([$sample])[0];
 $prediction = predictSample($normalizedSample, $weights);
 
