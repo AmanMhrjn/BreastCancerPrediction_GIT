@@ -89,7 +89,6 @@
                     </div>
                     <div class="userbtn">
                         <a href="user.php">Cancel</a>
-                        <input type="button" value="cancel">
                     </div>
                 </div>
             </form>

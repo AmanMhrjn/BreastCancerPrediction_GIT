@@ -1,146 +1,118 @@
 <?php
-
-// Function to train the logistic regression model
-function trainModel($data, $labels, $learningRate, $numEpochs) {
-    // Initialize weights
-    $numFeatures = count($data[0]);
-    $weights = array_fill(0, $numFeatures, 0);
-
-    // Perform gradient descent
-    for ($epoch = 0; $epoch < $numEpochs; $epoch++) {
-        $gradient = array_fill(0, $numFeatures, 0);
-
-        // Calculate gradient for each data point
-        for ($i = 0; $i < count($data); $i++) {
-            $prediction = predictSample($data[$i], $weights);
-            $error = $labels[$i] - $prediction;
-
-            // Update gradient
-            for ($j = 0; $j < $numFeatures; $j++) {
-                $gradient[$j] += $error * $data[$i][$j];
-            }
-        }
-
-        // Update weights using gradient descent
-        for ($j = 0; $j < $numFeatures; $j++) {
-            $weights[$j] += $learningRate * $gradient[$j];
-        }
-    }
-
-    return $weights;
-}
-
-// Function to predict the outcome for a single sample
-function predictSample($sample, $weights) {
-    $prediction = 0;
-    $numFeatures = count($sample);
-
-    // Calculate weighted sum
-    for ($i = 0; $i < $numFeatures; $i++) {
-        $prediction += $sample[$i] * $weights[$i];
-    }
-
-    // Apply sigmoid function
-    $prediction = 1 / (1 + exp(-$prediction));
-
-    return $prediction;
-}
-
-// Collect user input from the form
-$textureMean = $_POST['textureMean'];
-$radiusMean = $_POST['radiusMean'];
-$perimeterMean = $_POST['perimeterMean'];
-$areaMean = $_POST['areaMean'];
-$smoothnessMean = $_POST['smoothnessMean'];
-$compactnessMean = $_POST['compactnessMean'];
-$concavityMean = $_POST['concavityMean'];
-$concaveMean = $_POST['concaveMean'];
-$symmetryMean = $_POST['symmetryMean'];
-$fractalDimensionMean = $_POST['fractalDimensionMean'];
-
-$textureSe = $_POST['textureSe'];
-$radiusSe = $_POST['radiusSe'];
-$perimeterSe = $_POST['perimeterSe'];
-$areaSe = $_POST['areaSe'];
-$smoothnessSe = $_POST['smoothnessSe'];
-$compactnessSe = $_POST['compactnessSe'];
-$concavitySe = $_POST['concavitySe'];
-$concaveSe = $_POST['concaveSe'];
-$symmetrySe = $_POST['symmetrySe'];
-$fractalDimensionSe = $_POST['fractalDimensionSe'];
-
-$textureWorst = $_POST['textureWorst'];
-$radiusWorst = $_POST['radiusWorst'];
-$perimeterWorst = $_POST['perimeterWorst'];
-$areaWorst = $_POST['areaWorst'];
-$smoothnessWorst = $_POST['smoothnessWorst'];
-$compactnessWorst = $_POST['compactnessWorst'];
-$concavityWorst = $_POST['concavityWorst'];
-$concaveWorst = $_POST['concaveWorst'];
-$symmetryWorst = $_POST['symmetryWorst'];
-$fractalDimensionWorst = $_POST['fractalDimensionWorst'];
-
-// Load the dataset from a file
-$filename = 'breast-cancer.csv'; // Replace with the actual filename and path
+// Load the dataset from a CSV file
 $dataset = [];
-$labels = [];
-
-if (($handle = fopen($filename, 'r')) !== false) {
+if (($handle = fopen('breast-cancer.csv', 'r')) !== false) {
     while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        $dataset[] = array_slice($data, 0, count($data) - 1); // Exclude the label from the dataset
-        $labels[] = end($data); // Get the label from the last column
+        $dataset[] = $data;
     }
     fclose($handle);
-} else {
-    die('Error: Unable to open the dataset file.');
 }
 
+// Remove the header row from the dataset
+$header = array_shift($dataset);
 
-// Normalize the dataset
-function normalize($data) {
-  $normalizedData = [];
-    $numFeatures = count($data[0]);
+// Convert the dataset to numerical values
+$dataset = array_map(function ($row) {
+    return array_map('floatval', $row);
+}, $dataset);
 
-    for ($i = 0; $i < $numFeatures; $i++) {
-        $column = array_column($data, $i);
-        $min = min($column);
-        $max = max($column);
+// Separate the features (input) and labels (output)
+$features = array_map(function ($row) {
+    return array_slice($row, 1); // Exclude the first column (ID)
+}, $dataset);
 
-        foreach ($data as $j => $row) {
-          $value = $row[$i];
-          if (!is_numeric($value)) {
-              $value = 0.0;
-          } else {
-              $value = floatval($value);
-          }
-          $normalizedData[$j][$i] = ($value - $min) / ($max - $min);
-      }
-  }
+$labels = array_column($dataset, 1); // Extract the second column (diagnosis)
 
-  return $normalizedData;
+// Perform feature normalization
+function normalize($data)
+{
+    $min = min($data);
+    $max = max($data);
+    return array_map(function ($value) use ($min, $max) {
+        return ($value - $min) / ($max - $min);
+    }, $data);
 }
 
-// Normalize the dataset
-$normalizedDataset = normalize($dataset);
+$features = array_map('normalize', array_map('array_values', array_map('array_filter', array_map('normalize', array_map('array_values', $features)))));
 
-// Set the learning rate and number of epochs for training
-$learningRate = 0.1;
-$numEpochs = 1000;
+// Split the dataset into training and testing sets
+$splitRatio = 0.7; // 70% for training, 30% for testing
+$splitIndex = (int)(count($dataset) * $splitRatio);
+$trainFeatures = array_slice($features, 0, $splitIndex);
+$trainLabels = array_slice($labels, 0, $splitIndex);
+$testFeatures = array_slice($features, $splitIndex);
+$testLabels = array_slice($labels, $splitIndex);
 
-// Train the logistic regression model
-$weights = trainModel($normalizedDataset, $labels, $learningRate, $numEpochs);
+// Logistic regression training
+function sigmoid($x)
+{
+    return 1 / (1 + exp(-$x));
+}
 
-// Perform prediction on the user input
-$sample = [$textureMean,$radiusMean, $perimeterMean, $areaMean, $smoothnessMean, $compactnessMean,  $concavityMean,$concaveMean,
-            $symmetryMean,$fractalDimensionMean,$textureSe,$radiusSe,$perimeterSe,$areaSe,$smoothnessSe,$compactnessSe,$concavitySe,
-            $concaveSe,$symmetrySe,$fractalDimensionSe,$textureWorst,$radiusWorst,$perimeterWorst,$areaWorst,$smoothnessWorst,
-            $compactnessWorst,$concavityWorst,$concaveWorst,$symmetryWorst,$fractalDimensionWorst];
-$normalizedSample = normalize([$sample])[0];
-$prediction = predictSample($normalizedSample, $weights);
+function trainLogisticRegression($features, $labels, $learningRate, $numIterations)
+{
+    $numSamples = count($features);
+    $numFeatures = count($features[0]);
 
-// Return the prediction as response
-$response = $prediction > 0.5 ? 'Malignant' : 'Benign';
-echo $response;
+    $weights = array_fill(0, $numFeatures, 0);
+    $bias = 0;
 
+    for ($i = 0; $i < $numIterations; $i++) {
+        $predictedLabels = [];
+        $errors = [];
 
+        // Make predictions and calculate errors
+        for ($j = 0; $j < $numSamples; $j++) {
+            $predictedLabel = predict($features[$j], $weights, $bias);
+            $predictedLabels[] = $predictedLabel;
+            $error = $labels[$j] - $predictedLabel;
+            $errors[] = $error;
+        }
+
+        // Update weights and bias
+        for ($k = 0; $k < $numFeatures; $k++) {
+            $gradient = 0;
+            for ($j = 0; $j < $numSamples; $j++) {
+                $gradient += $errors[$j] * $features[$j][$k];
+            }
+            $weights[$k] += $learningRate * ($gradient / $numSamples);
+        }
+
+        $biasGradient = array_sum($errors) / $numSamples;
+        $bias += $learningRate * $biasGradient;
+    }
+
+    return ['weights' => $weights, 'bias' => $bias];
+}
+
+function predict($features, $weights, $bias)
+{
+    $logit = $bias;
+    for ($i = 0; $i < count($features); $i++) {
+        $logit += $features[$i] * $weights[$i];
+    }
+    $prediction = sigmoid($logit);
+    return ($prediction >= 0.5) ? 'Malignant' : 'Benign';
+}
+
+$learningRate = 0.01;
+$numIterations = 1000;
+
+$model = trainLogisticRegression($trainFeatures, $trainLabels, $learningRate, $numIterations);
+$weights = $model['weights'];
+$bias = $model['bias'];
+
+// Logistic regression testing and prediction
+$predictions = [];
+
+$numTestSamples = count($testFeatures);
+for ($i = 0; $i < $numTestSamples; $i++) {
+    $predictedLabel = predict($testFeatures[$i], $weights, $bias);
+    $predictions[] = $predictedLabel;
+}
+
+// Display the predictions
+foreach ($predictions as $prediction) {
+    echo $prediction . "<br>";
+}
 ?>
