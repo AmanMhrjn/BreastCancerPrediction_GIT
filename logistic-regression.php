@@ -95,22 +95,52 @@ $X = [
     [13.08, 15.71, 85.63, 520, 0.1075, 0.127, 0.04568, 0.0311, 0.1967, 0.06811, 0.1852, 0.7477, 1.383, 14.67, 0.004097, 0.01898, 0.01698, 0.00649, 0.01678, 0.002425, 14.5, 20.49, 96.09, 630.5, 0.1312, 0.2776, 0.189, 0.07283, 0.3184, 0.08183],
     [9.504, 12.44, 60.34, 273.9, 0.1024, 0.06492, 0.02956, 0.02076, 0.1815, 0.06905, 0.2773, 0.9768, 1.909, 15.7, 0.009606, 0.01432, 0.01985, 0.01421, 0.02027, 0.002968, 10.23, 15.66, 65.13, 314.9, 0.1324, 0.1148, 0.08867, 0.06227, 0.245, 0.07773],
     [15.34, 14.26, 102.5, 704.4, 0.1073, 0.2135, 0.2077, 0.09756, 0.2521, 0.07032, 0.4388, 0.7096, 3.384, 44.91, 0.006789, 0.05328, 0.06446, 0.02252, 0.03672, 0.004394, 18.07, 19.08, 125.1, 980.9, 0.139, 0.5954, 0.6305, 0.2393, 0.4667, 0.09946],
-    [13.03, 18.42, 82.61, 523.8, 0.08983, 0.03766, 0.02562, 0.02923, 0.1467, 0.05863, 0.1839, 2.342, 1.17, 14.16, 0.004352, 0.004899, 0.01343, 0.01164, 0.02671, 0.001777, 13.3, 22.81, 84.46, 545.9, 0.09701, 0.04619, 0.04833, 0.05013, 0.1987, 0.06169]
+    [13.03, 18.42, 82.61, 523.8, 0.08983, 0.03766, 0.02562, 0.02923, 0.1467, 0.05863, 0.1839, 2.342, 1.17, 14.16, 0.004352, 0.004899, 0.01343, 0.01164, 0.02671, 0.001777, 13.3, 22.81, 84.46, 545.9, 0.09701, 0.04619, 0.04833, 0.05013, 0.1987, 0.06169],
+    [17.95, 20.01, 114.2, 982, 0.08402, 0.06722, 0.07293, 0.05596, 0.2129, 0.05025, 0.5506, 1.214, 3.357, 54.04, 0.004024, 0.008422, 0.02291, 0.009863, 0.05014, 0.001902, 20.58, 27.83, 129.2, 1261, 0.1072, 0.1202, 0.2249, 0.1185, 0.4882, 0.06111],
+    [15.78, 22.91, 105.7, 782.6, 0.1155, 0.1752, 0.2133, 0.09479, 0.2096, 0.07331, 0.552, 1.072, 3.598, 58.63, 0.008699, 0.03976, 0.0595, 0.0139, 0.01495, 0.005984, 20.19, 30.5, 130.3, 1272, 0.1855, 0.4925, 0.7356, 0.2034, 0.3274, 0.1252],
+    [14.87, 16.67, 98.64, 682.5, 0.1162, 0.1649, 0.169, 0.08923, 0.2157, 0.06768, 0.4266, 0.9489, 2.989, 41.18, 0.006985, 0.02563, 0.03011, 0.01271, 0.01602, 0.003884, 18.81, 27.37, 127.1, 1095, 0.1878, 0.448, 0.4704, 0.2027, 0.3585, 0.1065]
 ];
-$y = [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0];
+$y = [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1];
 
 $logisticRegression = new LogisticRegression();
 $logisticRegression->train($X, $y);
 
-$newX = [14.26, 19.65, 97.83, 629.9, 0.07837, 0.2233, 0.3003, 0.07798, 0.1704, 0.07769, 0.3628, 1.49, 3.399, 29.25, 0.005298, 0.07446, 0.1435, 0.02292, 0.02566, 0.01298, 15.3, 23.73, 107, 709, 0.08949, 0.4193, 0.6783, 0.1505, 0.2398, 0.1082];
-// $num = 109;
-// $numf = sprintf("%.2f",$num);
-// $newX=array(sprintf("%.2f",$_POST["radiusMean"]),sprintf("%.2f",$_POST["textureMean"]),sprintf("%.2f",$_POST["perimeterMean"]), sprintf("%.2f",$_POST["areaMean"]),sprintf("%.2f",$_POST["smoothnessMean"]),sprintf("%.2f",$_POST["compactnessMean"]),sprintf("%.2f",$_POST["concavityMean"]),sprintf("%.2f",$_POST["concaveMean"]),sprintf("%.2f",$_POST["symmetryMean"]),
-// sprintf("%.2f",$_POST["fractalDimensionMean"]),sprintf("%.2f",$_POST["radiusSe"]),sprintf("%.2f",$_POST["textureSe"]),sprintf("%.2f",$_POST["perimeterMean"]),sprintf("%.2f",$_POST["areaSe"]),sprintf("%.2f",$_POST["smoothnessSe"]),sprintf("%.2f",$_POST["compactSe"]),sprintf("%.2f",$_POST["concavitySe"],$_POST["concaveSe"],
-// $_POST["SymmetrySe"]),sprintf("%.2f",$_POST["fractalDimensionSe"]),sprintf("%.2f",$_POST["radiusWorst"]),sprintf("%.2f",$_POST["textureWorst"]),sprintf("%.2f",$_POST["perimeterWorst"]),sprintf("%.2f",$_POST["areaWorst"]),sprintf("%.2f",$_POST["smoothnessWorst"]),sprintf("%.2f",$_POST["compactWorst"]),sprintf("%.2f",$_POST["concavityWorst"]),sprintf("%.2f",$_POST["concaveWorst"]),
-// sprintf("%.2f",$_POST["symmetryWorst"]),sprintf("%.2f",$_POST["fractalDimensionWorst"]));
-// $predictions = $logisticRegression->predict($newX);
+// $newX = [[13.03, 18.42, 82.61, 523.8, 0.08983, 0.03766 , 0.02562, 0.02923, 0.1467, 0.05863, 0.1839, 2.342, 1.17, 14.16, 0.004352, 0.004899, 0.01343, 0.01164, 0.02671, 0.001777, 13.3, 22.81, 84.46, 545.9, 0.09701, 0.04619, 0.04833, 0.05013, 0.1987, 0.06169]];
+// $newX = [[17.47, 24.68, 116.1, 984.6, 0.1049, 0.1603, 0.2159, 0.1043, 0.1538, 0.06365, 1.088, 1.41, 7.337, 122.3, 0.006174, 0.03634, 0.04644, 0.01569, 0.01145, 0.00512, 23.14, 32.33, 155.3, 1660, 0.1376, 0.383, 0.489, 0.1721, 0.216, 0.093]];
+$newX = [];
+$sub_arr = [];
+if ($_POST) {
+    // form data array ma haleko
 
-print_r($predictions);
+    foreach ($_POST as $key => $value) {
+        // echo "$key=$value";
+        // echo "<br>";
+        $test_val = floatval($value);
+        array_push($sub_arr, $test_val);
+    }
+    array_push($newX, $sub_arr);
 
+    // algo user gareko to predict
+    $predictions = $logisticRegression->predict($newX);
+
+
+    // show the predict result
+    // 1 is cancel
+    // 0 is healthy
+    // if ($predictions[0] == 1) {
+    //     echo "This user have <b>Malignant</b> ";
+    //     echo "<a href='predict.php'>go back</a>";
+    // } else {
+    //     echo "This user have <b>Benign</b>";
+    //     echo "<a href='predict.php'>go back</a>";
+    // }
+    echo '<script>';
+    echo 'if (' . $predictions[0] . ' === 1) {';
+    echo 'alert("This user has Malignant");';
+    echo '} else {';
+    echo 'alert("This user has Benign");';
+    echo '}';
+    echo 'window.history.back();'; // Go back to the previous page
+    echo '</script>';
+}
 ?>

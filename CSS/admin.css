@@ -15,7 +15,7 @@ body{
 /* Navigation codes */
 nav{
     background: #313131;
-    width: 100%;
+    width: auto;
     height: 60px;
     line-height: 60px;
     position: relative;
@@ -233,4 +233,10 @@ h2{
 
 .dashboardsidebarRight .mainCard .innerCard .cardBottom a:hover{
     border-bottom: 2px solid white;
+}
+
+
+/* history details */
+.historydetails{
+    padding: 14px;
 }

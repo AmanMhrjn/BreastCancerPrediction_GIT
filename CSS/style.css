@@ -330,7 +330,7 @@ label{
 /* end of signup page */
 /* Footer */
 footer{
-    position: absolute;
+    position: relative;
     background: #AE4EC6;
     text-align: center;
     padding: 16px;
@@ -354,7 +354,7 @@ footer{
   /* border: 2px solid black; */
   margin-top: 0%;
   display: flex;
-  height: 1250px;
+  height: 3300px;
   width: 100%;
 }
 
@@ -363,7 +363,7 @@ footer{
   margin: 5% auto;
   padding: 12px;
   width: 40%;
-  height: 1100px;
+  height: 3100px;
   background: #b7b7b7;
   box-shadow: 8px 8px 40px #000000;
 }
