@@ -58,12 +58,12 @@ nav ul li a:hover{
 .logoname{
     /* border: 2px solid white; */
     position: relative;
-    font-size: 28px;
+    font-size: 18px;
     color: white;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
-    width: 40%;
+    width: 50%;
 }
 
 /* End of navigation bar */
