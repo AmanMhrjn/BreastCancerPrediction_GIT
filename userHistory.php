@@ -53,17 +53,11 @@ if (!isset($_SESSION['id'])) {
                     echo "No data Found";
                 } else {
                 ?>
-                    <table border="1" style="width: 200%; text-align: center;">
+                    <table border="1" style="width: 100%; text-align: center;">
                         <thead style="background-color: black; color: white;">
                             <tr>
                                 <th>Id</th>
-                                <th>Full Name</th>
-                                <th>Username</th>
-                                <th>Address</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Email</th>
-                                <th>Password</th>
+                                <th>Diagnosis</th>
                                 <th colspan="2">Status</th>
                             </tr>
                         </thead>
@@ -72,18 +66,12 @@ if (!isset($_SESSION['id'])) {
 
 
                             while ($result = mysqli_fetch_array($query)) {
-                                print_r($result)
+                                // print_r($result)
                             ?>
                                 <tr>
                                     <!-- database header name -->
                                     <td><?php echo $result['id'] ?></td>
-                                    <td><?php echo $result['fullname'] ?></td>
-                                    <td><?php echo $result['username'] ?></td>
-                                    <td><?php echo $result['address'] ?></td>
-                                    <td><?php echo $result['age'] ?></td>
-                                    <td><?php echo $result['gender'] ?></td>
-                                    <td><?php echo $result['email'] ?></td>
-                                    <td><?php echo $result['password'] ?></td>
+                                    <td><?php echo $result['diagnosis'] ?></td>
                                     <td><a href="userUpdate.php?id=<?php echo $result['id'] ?>" title="update"><i class="fa fa-edit"></i></a></td>
                                     <td><a href="userDelete.php?id=<?php echo $result['id'] ?>" title="delete"><i class="fa fa-trash"></i></a></td>
                                 </tr>
