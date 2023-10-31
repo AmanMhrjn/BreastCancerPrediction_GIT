@@ -7,13 +7,13 @@ class LogisticRegression
 
     public function __construct($learningRate = 0.01, $numIterations = 1000)
     {
-        $this->learningRate = $learningRate;
+        $this->learningRate = $learningRate; 
         $this->numIterations = $numIterations;
     }
 
     private function sigmoid($z)
     {
-        return 1 / (1 + exp(-$z));
+        return 1 / (1 + exp(-$z)); 
     }
 
     private function gradientDescent($X, $y)
@@ -22,7 +22,7 @@ class LogisticRegression
         $numFeatures = count($X[0]);
         $this->weights = array_fill(0, $numFeatures, 0);
 
-        for ($i = 0; $i < $this->numIterations; $i++) {
+        for ($i = 0; $i < $this->numIterations; $i++) { 
             $predicted = array_fill(0, $numSamples, 0);
 
             for ($j = 0; $j < $numSamples; $j++) {
@@ -44,14 +44,13 @@ class LogisticRegression
 
     public function train($X, $y)
     {
-        // Add bias term to feature matrix
-        $numSamples = count($X);
+        
+        $numSamples = count($X); 
         $X = array_map(function ($row) {
             array_unshift($row, 1);
             return $row;
         }, $X);
 
-        // Convert target values to 0 and 1
         $y = array_map(function ($val) {
             return (int) ($val === 1);
         }, $y);
@@ -79,11 +78,11 @@ class LogisticRegression
             $predictions[$i] = $this->sigmoid($z) >= 0.5 ? 1 : 0;
         }
 
-        return $predictions;
+        return $predictions; //.$x
     }
 }
 
-// Example usage
+
 $X = [
     [17.99, 10.38, 122.8, 1001, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 0.07871, 1.095, 0.9053, 8.589, 153.4, 0.006399, 0.04904, 0.05373, 0.01587, 0.03003, 0.006193, 25.38, 17.33, 184.6, 2019, 0.1622, 0.6656, 0.7119, 0.2654, 0.4601, 0.1189],
     [20.57, 17.77, 132.9, 1326, 0.08474, 0.07864, 0.0869, 0.07017, 0.1812, 0.05667, 0.5435, 0.7339, 3.398, 74.08, 0.005225, 0.01308, 0.0186, 0.0134, 0.01389, 0.003532, 24.99, 23.41, 158.8, 1956, 0.1238, 0.1866, 0.2416, 0.186, 0.275, 0.08902],
@@ -100,7 +99,7 @@ $X = [
     [15.78, 22.91, 105.7, 782.6, 0.1155, 0.1752, 0.2133, 0.09479, 0.2096, 0.07331, 0.552, 1.072, 3.598, 58.63, 0.008699, 0.03976, 0.0595, 0.0139, 0.01495, 0.005984, 20.19, 30.5, 130.3, 1272, 0.1855, 0.4925, 0.7356, 0.2034, 0.3274, 0.1252],
     [14.87, 16.67, 98.64, 682.5, 0.1162, 0.1649, 0.169, 0.08923, 0.2157, 0.06768, 0.4266, 0.9489, 2.989, 41.18, 0.006985, 0.02563, 0.03011, 0.01271, 0.01602, 0.003884, 18.81, 27.37, 127.1, 1095, 0.1878, 0.448, 0.4704, 0.2027, 0.3585, 0.1065]
 ];
-$y = [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1];
+$y = [1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1];
 
 $logisticRegression = new LogisticRegression();
 $logisticRegression->train($X, $y);
@@ -110,37 +109,100 @@ $logisticRegression->train($X, $y);
 $newX = [];
 $sub_arr = [];
 if ($_POST) {
-    // form data array ma haleko
-
     foreach ($_POST as $key => $value) {
-        // echo "$key=$value";
-        // echo "<br>";
         $test_val = floatval($value);
         array_push($sub_arr, $test_val);
     }
     array_push($newX, $sub_arr);
 
-    // algo user gareko to predict
+ 
     $predictions = $logisticRegression->predict($newX);
 
+    // Calculate accuracy
+    $accuracy = calculateAccuracy($predictions, $y);
 
-    // show the predict result
-    // 1 is cancel
-    // 0 is healthy
-    // if ($predictions[0] == 1) {
-    //     echo "This user have <b>Malignant</b> ";
-    //     echo "<a href='predict.php'>go back</a>";
-    // } else {
-    //     echo "This user have <b>Benign</b>";
-    //     echo "<a href='predict.php'>go back</a>";
-    // }
+    // echo '<script>';
+    // echo 'if (' . $predictions[0] . ' === 1) {';
+    // echo 'alert("This patient has Malignant");';
+    // echo '} else {';
+    // echo 'alert("This patient has Benign");';
+    // echo '}';
+    // echo 'window.history.back();'; 
+    // echo '</script>';
+
+    
     echo '<script>';
     echo 'if (' . $predictions[0] . ' === 1) {';
-    echo 'alert("This user has Malignant");';
+    echo 'alert("This patient has Malignant. Accuracy: ' . $accuracy . '%");';
     echo '} else {';
-    echo 'alert("This user has Benign");';
+    echo 'alert("This patient has Benign. Accuracy: ' . $accuracy . '%");';
     echo '}';
-    echo 'window.history.back();'; // Go back to the previous page
     echo '</script>';
+
+    include "./Config/dbconnection.php";
+    $radius_mean = $_GET['radiusMean'];
+    $texture_mean = $_GET['textureMean'];
+    $perimeter_mean = $_GET['perimeterMean'];
+    $area_mean = $_GET['areaMean'];
+    $smoothness_mean = $_GET['smoothnessMean'];
+    $compactness_mean = $_GET['compactnessMean'];
+    $concavity_mean = $_GET['concavityMean'];
+    $concave_points_mean = $_GET['concaveMean'];
+    $symmetry_mean = $_GET['symmetryMean'];
+    $fractal_dimension_mean = $_GET['fractalDimensionMean'];
+    $radius_se = $_GET['radiusSe'];
+    $texture_se = $_GET['textureSe'];
+    $perimeter_se = $_GET['perimeterSe'];
+    $area_se = $_GET['areaSe'];
+    $smoothness_se = $_GET['smoothnessSe'];
+    $compactness_se = $_GET['compactSe'];
+    $concavity_se = $_GET['concavitySe'];
+    $concave_points_se = $_GET['concaveSe'];
+    $symmetry_se = $_GET['SymmetrySe'];
+    $fractal_dimension_se = $_GET['fractalDimensionSe'];
+    $radius_worst = $_GET['radiusWorst'];
+    $texture_worst = $_GET['textureWorst'];
+    $perimeter_worst = $_GET['perimeterWorst'];
+    $area_worst = $_GET['areaWorst'];
+    $smoothness_worst = $_GET['smoothnessWorst'];
+    $compactness_worst = $_GET['compactWorst'];
+    $concavity_worst = $_GET['concavityWorst'];
+    $concave_points_worst = $_GET['concaveWorst'];
+    $symmetry_worst = $_GET['symmetryWorst'];
+    $fractal_dimension_worst = $_GET['fractalDimensionWorst'];
+  
+      $sql = "INSERT INTO history(radius_mean, texture_mean, perimeter_mean, area_mean, 
+                smoothness_mean, compactness_mean, concavity_mean, concave_points_mean, symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, 
+                smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_se, fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, 
+                smoothness_worst, compactness_worst, concavity_worst, concave_points_worst, symmetry_worst, fractal_dimension_worst, diagnosis
+                ) VALUES (".$radius_mean.", ".$texture_mean.", ".$perimeter_mean.", ".$area_mean.", ".$smoothness_mean.", ".$compactness_mean.", ".$concavity_mean.", ".$concave_points_mean.", 
+                ".$symmetry_mean.", ".$fractal_dimension_mean.",
+                ".$radius_se.", ".$texture_se.", ".$perimeter_se.", ".$area_se.", ".$smoothness_se.",".$compactness_se.", ".$concavity_se.", ".$concave_points_se.", ".$symmetry_se.", 
+                ".$fractal_dimension_se.",".$radius_worst.", ".$texture_worst.", ".$perimeter_worst.", ".$area_worst.", ".$smoothness_worst.",
+                ".$compactness_worst.", ".$concavity_worst.", ".$concave_points_worst.", ".$symmetry_worst.", ".$fractal_dimension_worst.",".$predictions[0].")";
+      $result = mysqli_query($conn, $sql);
+
+      if ($result) {
+        // Insertion was successful
+        echo "Prediction result inserted into history table.";
+    } else {
+        // Insertion failed
+        echo "Error inserting prediction result: " . mysqli_error($conn);
+    }
+    
 }
+
+// function calculateAccuracy($predictions, $actual)
+// {
+//     $correct = 0;
+//     $total = count($actual);
+
+//     for ($i = 0; $i < $total; $i++) {
+//         if ($predictions[$i] == $actual[$i]) {
+//             $correct++;
+//         }
+//     }
+
+//     return ($correct / $total) * 100;
+// }
 ?>

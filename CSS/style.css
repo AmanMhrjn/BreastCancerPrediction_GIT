@@ -68,6 +68,13 @@ nav ul li a:hover{
 
 /* End of navigation bar */
 
+.grid-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+}
+
+
 /* Home page starts */
 .maincontainer{
     /* border: 2px solid black; */
@@ -354,7 +361,7 @@ footer{
   /* border: 2px solid black; */
   margin-top: 0%;
   display: flex;
-  height: 3300px;
+  height: 1600px;
   width: 100%;
 }
 
@@ -362,8 +369,8 @@ footer{
   /* border: 2px solid black; */
   margin: 5% auto;
   padding: 12px;
-  width: 40%;
-  height: 3100px;
+  width: 90%;
+  height: 1450px;
   background: #b7b7b7;
   box-shadow: 8px 8px 40px #000000;
 }

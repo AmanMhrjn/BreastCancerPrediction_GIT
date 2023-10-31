@@ -7,14 +7,14 @@
         $user_adrs = $_POST['addaddress'];
         $user_age = $_POST['addage'];
         $user_gender = $_POST['addgender'];
-        $user_email = $_POST['addeamil'];
+        $user_email = $_POST['addemail'];
         $user_psw= $_POST['addpsw'];
 
         // $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' ";
             $result = mysqli_query($conn, $sql);
             echo $conn -> error;
             if ($result->num_rows == 0) {
-                $sql = "INSERT INTO users (fullname,username, address, age, gender, email, password) VALUES ('$fullname','$username', '$address', '$age', '$gender', '$email', '$password')";
+                $sql = "INSERT INTO users (fullname, username, address, age, gender, email, password) VALUES ('$full_name','$user_name', '$user_adrs', '$user_age', '$user_gender', '$user_email', '$user_psw')";
                 $result = mysqli_query($conn, $sql);
                 
                 if ($result) {
@@ -79,7 +79,7 @@
                 <label for="gender">Gender:</label> <br>
                 <input type="text" name="addgender" id="addgender"> <br>
                 <label for="email">Email:</label> <br>
-                <input type="text" name="addeamil" id="addemail"> <br>
+                <input type="text" name="addemail" id="addemail"> <br>
                 <label for="password">Password:</label> <br>
                 <input type="password" name="addpsw" id="addpsw"> <br>
 

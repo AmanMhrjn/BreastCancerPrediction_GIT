@@ -20,13 +20,15 @@
         <li>
           <a href="predict.php">Predict</a>
         </li>
-        <?php if(!isset($_SESSION['id'])){
-?>
-                    <li><a href="login.php">Login</a></li><?php
-                }else{?>
-                    <li><a href="logout.php">Logout</a></li><?php
-                }
-                ?>
+        <?php
+        if (isset($_SESSION['username'])) {
+            // User is logged in, so show the "Logout" button
+            echo '<li><a href="logout.php">Logout</a></li>';
+        } else {
+            // User is not logged in, so show the "Login" button
+            echo '<li><a href="login.php">Login</a></li>';
+        }
+        ?>
       </ul>
     </nav>
     <div class="maincontainer">

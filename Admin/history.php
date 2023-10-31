@@ -48,6 +48,8 @@
                     <thead style="background-color: black; color: white;">
                         <tr>
                             <th>Id</th>
+                            <th>User Id</th>
+                            <th>Patient Id</th>
                             <th>diagnosis</th>
                             <th>radius_mean</th>
                             <th>texture_mean</th>

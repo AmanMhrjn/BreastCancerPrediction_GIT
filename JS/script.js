@@ -1,3 +1,40 @@
+// function validateInput(input) {
+//     var value = parseFloat(input.value);
+//     if (value === 0) {
+//         alert('Please enter a non-zero value in this field.');
+//         input.value = ''; // Clear the field
+//     }
+// }
+
+
+function validateForm() {
+    // Get references to all number input fields
+    const inputFields = document.querySelectorAll('input[type="number"]');
+    let valid = true;
+
+    // Loop through each input field and check the value
+    inputFields.forEach(function (input) {
+      const min = parseFloat(input.min);
+      const max = parseFloat(input.max);
+      const value = parseFloat(input.value);
+
+      // Check if the value is within the specified range
+      if (isNaN(value) || value < min || value > max) {
+        valid = false;
+        // You can also add custom validation messages here if needed
+      }
+    });
+
+    // If any input is invalid, prevent form submission and display a message
+    if (!valid) {
+      alert('Please enter valid values within the specified range.');
+      return false;
+    }
+
+    // If all inputs are valid, allow the form to be submitted
+    return true;
+  }
+
 // LOgin validation
 function validateLogin(){
     userName = document.getElementById('user-name').value;
@@ -27,81 +64,78 @@ function validateLogin(){
 
 
 // Signup validation
-// function validateSignup(){
-//     fullName = document.getElementById('full-name').value;
-//     userName = document.getElementById('user-name').value;
-//     address = document.getElementById('address').value;
-//     age = document.getElementById('age').value;
-//     gender = document.getElementById('gender').value;
-//     email = document.getElementById('email').value;
-//     password = document.getElementById('password').value;
+function validateSignup(){
+    fullName = document.getElementById('full-name').value;
+    userName = document.getElementById('user-name').value;
+    address = document.getElementById('address').value;
+    age = document.getElementById('age').value;
+    gender = document.getElementById('gender').value;
+    email = document.getElementById('email').value;
+    password = document.getElementById('password').value;
     
-//     fullNameError = document.getElementById('fullname-error');
-//     userNameError = document.getElementById('username-error');
-//     addressError = document.getElementById('address-error');
-//     ageError = document.getElementById('age-error');
-//     genderError = document.getElementById('gender-error');
-//     emailError = document.getElementById('email-error');
-//     passwordError = document.getElementById('password-error');
+    fullNameError = document.getElementById('fullname-error');
+    userNameError = document.getElementById('username-error');
+    addressError = document.getElementById('address-error');
+    ageError = document.getElementById('age-error');
+    genderError = document.getElementById('gender-error');
+    emailError = document.getElementById('email-error');
+    passwordError = document.getElementById('password-error');
 
-//     form = document.getElementById('signUp_form');
-//     validate = true;
+    form = document.getElementById('signUp_form');
+    validate = true;
 
-//     if(fullName == ""){
-//         fullNameError.innerHTML="Fullname cannot be EMPTY";
-//         fullNameError.style.display="block";
-//         validate = false;
-//     }
+    if(fullName == ""){
+        fullNameError.innerHTML="Fullname cannot be EMPTY";
+        fullNameError.style.display="block";
+        validate = false;
+    }
 
-//     if(userName == ""){
-//         userNameError.innerHTML="Username cannot be EMPTY";
-//         userNameError.style.display="block";
-//         validate = false;
-//     }
+    if(userName == ""){
+        userNameError.innerHTML="Username cannot be EMPTY";
+        userNameError.style.display="block";
+        validate = false;
+    }
 
-//     if(address == ""){
-//         addressError.innerHTML="Address cannot be EMPTY";
-//         addressError.style.display="block";
-//         validate = false;
-//     }
+    if(address == ""){
+        addressError.innerHTML="Address cannot be EMPTY";
+        addressError.style.display="block";
+        validate = false;
+    }
 
-//     if(age == ""){
-//         ageError.innerHTML="Age cannot be EMPTY";
-//         ageError.style.display="block";
-//         validate = false;
-//     }
+    if(age == ""){
+        ageError.innerHTML="Age cannot be EMPTY";
+        ageError.style.display="block";
+        validate = false;
+    }
 
-//     if(gender == ""){
-//         genderError.innerHTML="Gender cannot be EMPTY";
-//         genderError.style.display="block";
-//         validate = false;
-//     }
+    if(gender == ""){
+        genderError.innerHTML="Gender cannot be EMPTY";
+        genderError.style.display="block";
+        validate = false;
+    }
 
-//     if(email == ""){
-//         emailError.innerHTML="Email cannot be EMPTY";
-//         emailError.style.display="block";
-//         validate = false;
-//     }
+    if(email == ""){
+        emailError.innerHTML="Email cannot be EMPTY";
+        emailError.style.display="block";
+        validate = false;
+    }
 
-//     if(password == ""){
-//         passwordError.innerHTML="Password cannot be EMPTY";
-//         passwordError.style.display="block";
-//         validate = false;
-//     }
-//     //else{
-//     //     if(password.length<12){
-//     //         passwordError.innerHTML="Password cannot be less than 12 characters";
-//     //         passwordError.style.display="block";
-//     //         validate = false;
-//     //     }
-//     // }
-
-    
-
-//     if(validate){
-//         form.submit();
-//     }
-// }
+    if(password == ""){
+        passwordError.innerHTML="Password cannot be EMPTY";
+        passwordError.style.display="block";
+        validate = false;
+    }
+    else{
+        if(password.length<12){
+            passwordError.innerHTML="Password cannot be less than 12 characters";
+            passwordError.style.display="block";
+            validate = false;
+        }
+    }
+    if(validate){
+        form.submit();
+    }
+}
 
 
 // // validation of prediction

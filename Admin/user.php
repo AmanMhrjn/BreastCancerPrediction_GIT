@@ -82,8 +82,8 @@
                                 <td><?php echo $result['gender']?></td>
                                 <td><?php echo $result['email']?></td>
                                 <td><?php echo $result['password']?></td>
-                                <td><a href="userUpdate.php?id=<?php echo $result['id']?>" title="update"><i class="fa fa-edit"></i></a></td>
-                                        <td><a href="userDelete.php?id=<?php echo $result['id']?>" title="delete"><i class="fa fa-trash"></i></a></td>
+
+                                <td><a href="userDelete.php?id=<?php echo $result['id']?>" title="delete"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         <?php
                             }

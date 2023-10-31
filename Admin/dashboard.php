@@ -73,10 +73,26 @@
             <div class="mainCard">
                 <div class="innerCard">
                     <!-- <div > -->
-                        <div class="cardText">Users</div>
-                        <div class="cardNumber">2</div>
+                        <div class="cardText">History</div>
+                        <?php
+                                $conn = mysqli_connect("localhost", "root", "aman", "breastcancer_db");
+
+                                $query = "select * from history";
+                                $query_run = mysqli_query($conn, $query);
+                                
+                                $row = mysqli_num_rows($query_run);
+                                
+                                echo '<div class="cardNumber">'.$row.'</div>';
+
+                                // if($user_total = mysqli_num_rows($dash_user_query_run)){
+                                //     echo '<div class="cardNumber">'.$user_total.'</div>';
+                                // }
+                                // else{
+                                //     echo 'No data';
+                                // }
+                            ?>
                         <div class="cardBottom">
-                            <a href="user.php">User details</a>
+                            <a href="history.php">History details</a>
                         </div>
                     <!-- </div> -->
                 </div>
