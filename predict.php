@@ -4,9 +4,8 @@ include 'logistic-regression.php';
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (!isset($_SESSION['id'])) {
   header("Location:login.php");
-  exit();
 }
 
 // if($_POST) {
@@ -33,17 +32,18 @@ if (isset($_SESSION['username'])) {
         <a href="index.php">Home</a>
       </li>
       <li>
-        <a href="predict.php" class="active">Predict</a>
+        <a href="predict.php">Predict</a>
       </li>
-      <?php
-      if (isset($_SESSION['username'])) {
-        // User is logged in, so show the "Logout" button
-        echo '<li><a href="logout.php">Logout</a></li>';
-      } else {
-        // User is not logged in, so show the "Login" button
-        echo '<li><a href="login.php">Login</a></li>';
-      }
-      ?>
+      <?php if ($_SESSION['id']) { ?>
+        <li>
+          <a href="userHistory.php" class="active">History</a>
+          <a href="logout.php" class="active">Logout</a>
+        </li>
+      <?php } else { ?>
+        <li>
+          <a href="login.php" class="active">Login</a>
+        </li>
+      <?php } ?>
     </ul>
   </nav>
   <div class="maincontainerprediction">

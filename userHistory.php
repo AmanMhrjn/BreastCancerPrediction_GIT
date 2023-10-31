@@ -63,8 +63,6 @@ if (!isset($_SESSION['id'])) {
                         </thead>
                         <tbody>
                             <?php
-
-
                             while ($result = mysqli_fetch_array($query)) {
                                 // print_r($result)
                             ?>
