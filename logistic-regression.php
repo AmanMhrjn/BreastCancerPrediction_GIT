@@ -141,47 +141,49 @@ if ($_POST) {
     echo '</script>';
 
     include "./Config/dbconnection.php";
-    $radius_mean = $_GET['radiusMean'];
-    $texture_mean = $_GET['textureMean'];
-    $perimeter_mean = $_GET['perimeterMean'];
-    $area_mean = $_GET['areaMean'];
-    $smoothness_mean = $_GET['smoothnessMean'];
-    $compactness_mean = $_GET['compactnessMean'];
-    $concavity_mean = $_GET['concavityMean'];
-    $concave_points_mean = $_GET['concaveMean'];
-    $symmetry_mean = $_GET['symmetryMean'];
-    $fractal_dimension_mean = $_GET['fractalDimensionMean'];
-    $radius_se = $_GET['radiusSe'];
-    $texture_se = $_GET['textureSe'];
-    $perimeter_se = $_GET['perimeterSe'];
-    $area_se = $_GET['areaSe'];
-    $smoothness_se = $_GET['smoothnessSe'];
-    $compactness_se = $_GET['compactSe'];
-    $concavity_se = $_GET['concavitySe'];
-    $concave_points_se = $_GET['concaveSe'];
-    $symmetry_se = $_GET['SymmetrySe'];
-    $fractal_dimension_se = $_GET['fractalDimensionSe'];
-    $radius_worst = $_GET['radiusWorst'];
-    $texture_worst = $_GET['textureWorst'];
-    $perimeter_worst = $_GET['perimeterWorst'];
-    $area_worst = $_GET['areaWorst'];
-    $smoothness_worst = $_GET['smoothnessWorst'];
-    $compactness_worst = $_GET['compactWorst'];
-    $concavity_worst = $_GET['concavityWorst'];
-    $concave_points_worst = $_GET['concaveWorst'];
-    $symmetry_worst = $_GET['symmetryWorst'];
-    $fractal_dimension_worst = $_GET['fractalDimensionWorst'];
+    $radius_mean = $_POST['radiusMean'];
+    $texture_mean = $_POST['textureMean'];
+    $perimeter_mean = $_POST['perimeterMean'];
+    $area_mean = $_POST['areaMean'];
+    $smoothness_mean = $_POST['smoothnessMean'];
+    $compactness_mean = $_POST['compactnessMean'];
+    $concavity_mean = $_POST['concavityMean'];
+    $concave_points_mean = $_POST['concaveMean'];
+    $symmetry_mean = $_POST['symmetryMean'];
+    $fractal_dimension_mean = $_POST['fractalDimensionMean'];
+    $radius_se = $_POST['radiusSe'];
+    $texture_se = $_POST['textureSe'];
+    $perimeter_se = $_POST['perimeterSe'];
+    $area_se = $_POST['areaSe'];
+    $smoothness_se = $_POST['smoothnessSe'];
+    $compactness_se = $_POST['compactSe'];
+    $concavity_se = $_POST['concavitySe'];
+    $concave_points_se = $_POST['concaveSe'];
+    $symmetry_se = $_POST['SymmetrySe'];
+    $fractal_dimension_se = $_POST['fractalDimensionSe'];
+    $radius_worst = $_POST['radiusWorst'];
+    $texture_worst = $_POST['textureWorst'];
+    $perimeter_worst = $_POST['perimeterWorst'];
+    $area_worst = $_POST['areaWorst'];
+    $smoothness_worst = $_POST['smoothnessWorst'];
+    $compactness_worst = $_POST['compactWorst'];
+    $concavity_worst = $_POST['concavityWorst'];
+    $concave_points_worst = $_POST['concaveWorst'];
+    $symmetry_worst = $_POST['symmetryWorst'];
+    $fractal_dimension_worst = $_POST['fractalDimensionWorst'];
   
       $sql = "INSERT INTO history(radius_mean, texture_mean, perimeter_mean, area_mean, 
                 smoothness_mean, compactness_mean, concavity_mean, concave_points_mean, symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, 
                 smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_se, fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, 
-                smoothness_worst, compactness_worst, concavity_worst, concave_points_worst, symmetry_worst, fractal_dimension_worst, diagnosism,userID
+                smoothness_worst, compactness_worst, concavity_worst, concave_points_worst, symmetry_worst, fractal_dimension_worst, diagnosis,userID
                 ) VALUES (".$radius_mean.", ".$texture_mean.", ".$perimeter_mean.", ".$area_mean.", ".$smoothness_mean.", ".$compactness_mean.", ".$concavity_mean.", ".$concave_points_mean.", 
                 ".$symmetry_mean.", ".$fractal_dimension_mean.",
                 ".$radius_se.", ".$texture_se.", ".$perimeter_se.", ".$area_se.", ".$smoothness_se.",".$compactness_se.", ".$concavity_se.", ".$concave_points_se.", ".$symmetry_se.", 
                 ".$fractal_dimension_se.",".$radius_worst.", ".$texture_worst.", ".$perimeter_worst.", ".$area_worst.", ".$smoothness_worst.",
                 ".$compactness_worst.", ".$concavity_worst.", ".$concave_points_worst.", ".$symmetry_worst.", ".$fractal_dimension_worst.",".$predictions[0].",".$_SESSION['id'].")";
+    // echo $sql;
       $result = mysqli_query($conn, $sql);
+
 
       if ($result) {
         // Insertion was successful
