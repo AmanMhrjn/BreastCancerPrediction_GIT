@@ -119,26 +119,19 @@ if ($_POST) {
  
     $predictions = $logisticRegression->predict($newX);
 
-    // Calculate accuracy
-    // $accuracy = calculateAccuracy($predictions, $y);
+  
 
-    // echo '<script>';
-    // echo 'if (' . $predictions[0] . ' === 1) {';
-    // echo 'alert("This patient has Malignant");';
-    // echo '} else {';
-    // echo 'alert("This patient has Benign");';
-    // echo '}';
-    // echo 'window.history.back();'; 
-    // echo '</script>';
-
-    
     echo '<script>';
     echo 'if (' . $predictions[0] . ' === 1) {';
-    echo 'alert("This patient has Malignant. Accuracy: ' . $accuracy . '%");';
+    echo 'alert("This patient has Malignant");';
     echo '} else {';
-    echo 'alert("This patient has Benign. Accuracy: ' . $accuracy . '%");';
+    echo 'alert("This patient has Benign");';
     echo '}';
+    echo 'window.history.back();'; 
     echo '</script>';
+
+    
+  
 
     include "./Config/dbconnection.php";
     $radius_mean = $_POST['radiusMean'];
@@ -195,17 +188,4 @@ if ($_POST) {
     
 }
 
-// function calculateAccuracy($predictions, $actual)
-// {
-//     $correct = 0;
-//     $total = count($actual);
-
-//     for ($i = 0; $i < $total; $i++) {
-//         if ($predictions[$i] == $actual[$i]) {
-//             $correct++;
-//         }
-//     }
-
-//     return ($correct / $total) * 100;
-// }
 ?>

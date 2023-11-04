@@ -42,10 +42,12 @@
             </ul>
         </div>
         <div class="sidebarRight">
-            <div>
+            <div class="userbox">
                 <a href="addUser.php" class="useradd">Add Users</a>
             </div>
             <div class="userdetails">
+            <div class="outer-wrapper">
+            <div class="table-wrapper">
                 <table border="1" style="width: 200%; text-align: center;">
                     <thead style="background-color: black; color: white;">
                         <tr>
@@ -90,6 +92,8 @@
                         ?>
                     </tbody>
                 </table>
+            </div>
+            </div>
             </div>
         </div>
     </div>

@@ -44,12 +44,14 @@
         <div class="sidebarRight">
 
             <div class="historydetails">
+            <div class="outer-wrapper">
+            <div class="table-wrapper">
                 <table border="1" style="width: 200%; text-align: center;">
                     <thead style="background-color: black; color: white;">
                         <tr>
-                            <th>Id</th>
+                            <!-- <th>Id</th> -->
                             <th>User Id</th>
-                            <th>Patient Id</th>
+                            <th>Username</th>
                             <th>diagnosis</th>
                             <th>radius_mean</th>
                             <th>texture_mean</th>
@@ -88,7 +90,8 @@
                         <?php
                             include "../Config/dbconnection.php";
 
-                            $selectquery = "SELECT * FROM history";
+                            // $selectquery = "SELECT * FROM history";
+                            $selectquery = "SELECT * FROM history inner join users on users.id = history.userID";
 
                             $query = mysqli_query($conn,  $selectquery);
 
@@ -97,9 +100,19 @@
                             while($result = mysqli_fetch_array($query)){
                         ?>
                             <tr>
+                                <!-- <?php print_r($result) ?> -->
                                 <!-- database header name -->
                                 <td><?php echo $result['id']?></td> 
-                                <td><?php echo $result['diagnosis']?></td>
+                                <td><?php echo $result['username']?></td> 
+                                <td>
+                                    <?php if($result['diagnosis'] == 0){
+                                        echo 'Benign';
+                                    }else{
+                                        echo 'Malignant';
+                                    }
+
+                                    ?>
+                                </td>
                                 <td><?php echo $result['radius_mean']?></td>
                                 <td><?php echo $result['texture_mean']?></td>
                                 <td><?php echo $result['perimeter_mean']?></td>
@@ -130,15 +143,19 @@
                                 <td><?php echo $result['concave_points_worst']?></td>
                                 <td><?php echo $result['symmetry_worst']?></td>
                                 <td><?php echo $result['fractal_dimension_worst']?></td>
-                               
-                                <td><a href="userDelete.php?id=<?php echo $result['id']?>" title="delete"><i class="fa fa-trash"></i></a></td>
+                                <td><a href="historyDelete.php?id=<?php echo $result['id']?>" title="delete"><i class="fa fa-trash"></i></a></td>
                             </tr>
+                            
                         <?php
                             }
                         ?>
+                        <tr>
                     </tbody>
                 </table>
             </div>
+            </div>
+            </div>
+            
         </div>
     </div>
     <?php

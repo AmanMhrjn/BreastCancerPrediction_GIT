@@ -17,19 +17,19 @@ session_start();
     <div class="logoname">Breast Cancer Prediction</div>
     <ul>
       <li>
-        <a href="index.php">Home</a>
+        <a href="index.php" class="active">Home</a>
       </li>
       <li>
         <a href="predict.php">Predict</a>
       </li>
       <?php if ($_SESSION['id']) { ?>
         <li>
-          <a href="userHistory.php" class="active">History</a>
-          <a href="logout.php" class="active">Logout</a>
+          <a href="userHistory.php">History</a>
+          <a href="logout.php">Logout</a>
         </li>
       <?php } else { ?>
         <li>
-          <a href="login.php" class="active">Login</a>
+          <a href="login.php" >Login</a>
         </li>
       <?php } ?>
     </ul>

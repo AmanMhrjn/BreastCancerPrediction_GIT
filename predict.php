@@ -32,16 +32,16 @@ if (!isset($_SESSION['id'])) {
         <a href="index.php">Home</a>
       </li>
       <li>
-        <a href="predict.php">Predict</a>
+        <a href="predict.php" class="active">Predict</a>
       </li>
       <?php if ($_SESSION['id']) { ?>
         <li>
-          <a href="userHistory.php" class="active">History</a>
-          <a href="logout.php" class="active">Logout</a>
+          <a href="history.php">History</a>
+          <a href="logout.php" >Logout</a>
         </li>
       <?php } else { ?>
         <li>
-          <a href="login.php" class="active">Login</a>
+          <a href="login.php">Login</a>
         </li>
       <?php } ?>
     </ul>
@@ -216,7 +216,7 @@ if (!isset($_SESSION['id'])) {
           </div>
           <div>
             <label for="fractalDimensionWorst">Fractal Dimension Worst:</label><br>
-            <input type="number" step="0.0001" min="0.05404" max="0.2085" placeholder="Range from 0.05404 - 0.2085"
+            <input type="number" step="0.000001" min="0.05404" max="0.2085" placeholder="Range from 0.05404 - 0.2085"
               id="fractalDimensionWorst" name="fractalDimensionWorst"><br> <!-- oninput="validateInput(this)" -->
             <!-- onchange="checkRange();" -->
           </div>
@@ -232,14 +232,3 @@ if (!isset($_SESSION['id'])) {
 </body>
 
 </html>
-<script>
-  // function checkRange() {
-  //   var element=document.getElementById('fractalDimensionWorst').value();
-  //   if(element<0.2085 && element>0.5490){
-  //     console.log('hello');
-
-  //   }
-
-</script>
-
-

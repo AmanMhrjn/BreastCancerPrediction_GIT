@@ -84,6 +84,8 @@
                                 
                                 echo '<div class="cardNumber">'.$row.'</div>';
 
+                                // <div class="cardNumber">7</div>
+
                                 // if($user_total = mysqli_num_rows($dash_user_query_run)){
                                 //     echo '<div class="cardNumber">'.$user_total.'</div>';
                                 // }

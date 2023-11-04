@@ -240,3 +240,78 @@ h2{
 .historydetails{
     padding: 14px;
 }
+
+.sidebarRight .historydetails .outer-wrapper .table-wrapper table th{
+    position: sticky;
+    top: 0px;
+  }
+  
+  .sidebarRight .historydetails .outer-wrapper .table-wrapper{
+    max-height: 1200px;
+    overflow-x: scroll;
+    /* overflow: hidden; */
+    /* margin: 10px; */
+    width: 1200px;
+  } 
+  
+  .sidebarRight .historydetails .outer-wrapper{
+    border: 1ps solid black;
+    box-shadow: 0px 0px 3px black;
+    margin: 16px;
+    border-radius: 5px;
+    max-width: fit-content;
+    height: 400px;
+    padding: 10px;
+  }
+  
+  .sidebarRight .historydetails .outer-wrapper .table-wrapper table th,td{
+   padding: 10px; 
+  }
+  
+
+
+  .userdetails{
+    padding: 14px;
+}
+
+.sidebarRight .userdetails .outer-wrapper .table-wrapper table th{
+    position: sticky;
+    top: 0px;
+  }
+  
+  .sidebarRight .userdetails .outer-wrapper .table-wrapper{
+    max-height: 1200px;
+    overflow-x: scroll;
+    /* overflow: hidden; */
+    /* margin: 10px; */
+    width: 1200px;
+  } 
+  
+  .sidebarRight .userdetails .outer-wrapper{
+    border: 1ps solid black;
+    box-shadow: 0px 0px 3px black;
+    margin: 16px;
+    border-radius: 5px;
+    max-width: fit-content;
+    height: 400px;
+    padding: 10px;
+  }
+  
+  .sidebarRight .userdetails .outer-wrapper .table-wrapper table th,td{
+   padding: 10px; 
+  }
+
+  .sidebarRight .userbox{
+    margin-top: 19px;
+  }
+
+  .useradd{
+    /* border: 1px solid black; */
+    margin: 12px;
+    margin-top: 12px;
+    width: 50px;
+    padding: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgb(30, 84, 66);
+  }
